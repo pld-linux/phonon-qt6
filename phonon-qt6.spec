@@ -25,7 +25,7 @@ BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	pulseaudio-devel >= 0.9.21
 BuildRequires:	qt6-build >= %{qt6_ver}
-BuildRequires:	qt6-linguist %{qt6_ver}
+BuildRequires:	qt6-linguist >= %{qt6_ver}
 BuildRequires:	qt6-qmake >= %{qt6_ver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
