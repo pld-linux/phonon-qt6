@@ -1,14 +1,10 @@
-#
-# Conditional build:
-%bcond_without	zeitgeist	# enable zeitgeist (via libqzeitgeist) supoort
-
 %define		qt6_ver		6.6.1
 
 Summary:	Phonon: multimedia API for Qt6/KDE6
 Summary(pl.UTF-8):	Phonon - biblioteka multimedialna dla Qt6/KDE6
 Name:		phonon-qt6
 Version:	4.12.0
-Release:	1
+Release:	2
 License:	LGPL v2.1 or LGPL v3
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar.xz
@@ -24,7 +20,6 @@ BuildRequires:	Qt6Widgets-devel >= %{qt6_ver}
 BuildRequires:	cmake >= 3.20.0
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	kf6-extra-cmake-modules >= 5.60
-%{?with_zeitgeist:BuildRequires:	libqzeitgeist-devel >= 0.8}
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	pulseaudio-devel >= 0.9.21
@@ -41,7 +36,6 @@ Requires:	Qt6Gui >= %{qt6_ver}
 Requires:	Qt6OpenGL >= %{qt6_ver}
 Requires:	Qt6Widgets >= %{qt6_ver}
 Requires:	kde-common-dirs >= 0.5
-%{?with_zeitgeist:Requires:	libqzeitgeist >= 0.8}
 Provides:	qt6-phonon
 Conflicts:	phonon < 4.10.3-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
