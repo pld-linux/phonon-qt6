@@ -16,18 +16,18 @@ BuildRequires:	Qt6Designer-devel >= %{qt6_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt6_ver}
 BuildRequires:	Qt6OpenGL-devel >= %{qt6_ver}
 BuildRequires:	Qt6Qml-devel >= %{qt6_ver}
+BuildRequires:	Qt6Qt5Compat-devel >= %{qt6_ver}
 BuildRequires:	Qt6Widgets-devel >= %{qt6_ver}
 BuildRequires:	cmake >= 3.20.0
 BuildRequires:	glib2-devel >= 2.0
-BuildRequires:	kf6-extra-cmake-modules >= 5.60
+BuildRequires:	kf6-extra-cmake-modules >= 5.90
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	pulseaudio-devel >= 0.9.21
 BuildRequires:	qt6-build >= %{qt6_ver}
-BuildRequires:	qt6-build >= %{qt6_ver}
+BuildRequires:	qt6-linguist %{qt6_ver}
 BuildRequires:	qt6-qmake >= %{qt6_ver}
-BuildRequires:	qt6-qmake >= %{qt6_ver}
-BuildRequires:	rpmbuild(macros) >= 1.605
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	Qt6Core >= %{qt6_ver}
