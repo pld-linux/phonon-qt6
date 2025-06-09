@@ -4,7 +4,7 @@ Summary:	Phonon: multimedia API for Qt6/KDE6
 Summary(pl.UTF-8):	Phonon - biblioteka multimedialna dla Qt6/KDE6
 Name:		phonon-qt6
 Version:	4.12.0
-Release:	2
+Release:	3
 License:	LGPL v2.1 or LGPL v3
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar.xz
@@ -62,7 +62,7 @@ Summary(pl.UTF-8):	Aplikacja do ustawień Phonona
 Group:		X11/Applications/Multimedia
 Requires:	%{name} = %{version}-%{release}
 Provides:	phonon-settings = %{version}-%{release}
-Obsoletes:	phonon-qt5-settings < 4.12.0
+Obsoletes:	phonon-qt5-settings < 4.13
 
 %description settings
 Phonon settings application.
