@@ -9,7 +9,7 @@ License:	LGPL v2.1 or LGPL v3
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar.xz
 # Source0-md5:	e80e9c73967080016bdb3c0ee514ceab
-URL:		http://phonon.kde.org/
+URL:		https://userbase.kde.org/Phonon
 BuildRequires:	Qt6Core-devel >= %{qt6_ver}
 BuildRequires:	Qt6DBus-devel >= %{qt6_ver}
 BuildRequires:	Qt6Designer-devel >= %{qt6_ver}
