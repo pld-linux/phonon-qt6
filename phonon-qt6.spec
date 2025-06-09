@@ -11,13 +11,12 @@ Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar
 # Source0-md5:	e80e9c73967080016bdb3c0ee514ceab
 URL:		https://userbase.kde.org/Phonon
 BuildRequires:	Qt6Core-devel >= %{qt6_ver}
-BuildRequires:	Qt6DBus-devel >= %{qt6_ver}
 BuildRequires:	Qt6Designer-devel >= %{qt6_ver}
 BuildRequires:	Qt6Gui-devel >= %{qt6_ver}
 BuildRequires:	Qt6OpenGL-devel >= %{qt6_ver}
-BuildRequires:	Qt6Qml-devel >= %{qt6_ver}
 BuildRequires:	Qt6Qt5Compat-devel >= %{qt6_ver}
 BuildRequires:	Qt6Widgets-devel >= %{qt6_ver}
+BuildRequires:	Qt6Xml-devel >= %{qt6_ver}
 BuildRequires:	cmake >= 3.20.0
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	kf6-extra-cmake-modules >= 5.90
@@ -31,11 +30,9 @@ BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 Requires:	Qt6Core >= %{qt6_ver}
-Requires:	Qt6DBus >= %{qt6_ver}
 Requires:	Qt6Gui >= %{qt6_ver}
 Requires:	Qt6OpenGL >= %{qt6_ver}
 Requires:	Qt6Widgets >= %{qt6_ver}
-Requires:	kde-common-dirs >= 0.5
 Provides:	qt6-phonon
 Conflicts:	phonon < 4.10.3-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,8 +62,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Phonon
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	Qt6Core-devel >= %{qt6_ver}
-Requires:	Qt6DBus-devel >= %{qt6_ver}
-Requires:	Qt6Gui-devel >= %{qt6_ver}
+Requires:	Qt6Widgets-devel >= %{qt6_ver}
 Provides:	qt6-phonon-devel
 Obsoletes:	qt6-phonon-devel
 
@@ -108,10 +104,12 @@ ctest
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %ninja_install -C build
 
 install -d $RPM_BUILD_ROOT%{_libdir}/qt6/plugins/phonon4qt6_backend
 
+# libphonon_qt.qm and phononsettings_qt.qm files
 %find_lang libphonon_qt --with-qm --all-name
 
 %clean
