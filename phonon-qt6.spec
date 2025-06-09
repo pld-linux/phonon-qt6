@@ -1,4 +1,4 @@
-%define		qt6_ver		6.6.1
+%define		qt_ver		6.6.1
 
 Summary:	Phonon: multimedia API for Qt6/KDE6
 Summary(pl.UTF-8):	Phonon - biblioteka multimedialna dla Qt6/KDE6
@@ -10,29 +10,29 @@ Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar.xz
 # Source0-md5:	e80e9c73967080016bdb3c0ee514ceab
 URL:		https://userbase.kde.org/Phonon
-BuildRequires:	Qt6Core-devel >= %{qt6_ver}
-BuildRequires:	Qt6Designer-devel >= %{qt6_ver}
-BuildRequires:	Qt6Gui-devel >= %{qt6_ver}
-BuildRequires:	Qt6OpenGL-devel >= %{qt6_ver}
-BuildRequires:	Qt6Qt5Compat-devel >= %{qt6_ver}
-BuildRequires:	Qt6Widgets-devel >= %{qt6_ver}
-BuildRequires:	Qt6Xml-devel >= %{qt6_ver}
+BuildRequires:	Qt6Core-devel >= %{qt_ver}
+BuildRequires:	Qt6Designer-devel >= %{qt_ver}
+BuildRequires:	Qt6Gui-devel >= %{qt_ver}
+BuildRequires:	Qt6OpenGL-devel >= %{qt_ver}
+BuildRequires:	Qt6Qt5Compat-devel >= %{qt_ver}
+BuildRequires:	Qt6Widgets-devel >= %{qt_ver}
+BuildRequires:	Qt6Xml-devel >= %{qt_ver}
 BuildRequires:	cmake >= 3.20.0
 BuildRequires:	glib2-devel >= 2.0
 BuildRequires:	kf6-extra-cmake-modules >= 5.90
 BuildRequires:	ninja
 BuildRequires:	pkgconfig
 BuildRequires:	pulseaudio-devel >= 0.9.21
-BuildRequires:	qt6-build >= %{qt6_ver}
-BuildRequires:	qt6-linguist >= %{qt6_ver}
-BuildRequires:	qt6-qmake >= %{qt6_ver}
+BuildRequires:	qt6-build >= %{qt_ver}
+BuildRequires:	qt6-linguist >= %{qt_ver}
+BuildRequires:	qt6-qmake >= %{qt_ver}
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	Qt6Core >= %{qt6_ver}
-Requires:	Qt6Gui >= %{qt6_ver}
-Requires:	Qt6OpenGL >= %{qt6_ver}
-Requires:	Qt6Widgets >= %{qt6_ver}
+Requires:	Qt6Core >= %{qt_ver}
+Requires:	Qt6Gui >= %{qt_ver}
+Requires:	Qt6OpenGL >= %{qt_ver}
+Requires:	Qt6Widgets >= %{qt_ver}
 Conflicts:	phonon < 4.10.3-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -60,8 +60,8 @@ Summary:	Header files for Phonon library
 Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki Phonon
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	Qt6Core-devel >= %{qt6_ver}
-Requires:	Qt6Widgets-devel >= %{qt6_ver}
+Requires:	Qt6Core-devel >= %{qt_ver}
+Requires:	Qt6Widgets-devel >= %{qt_ver}
 
 %description devel
 Header files for Phonon library.
@@ -74,7 +74,7 @@ Summary:	Phonon plugin for Qt6 QtDesigner
 Summary(pl.UTF-8):	Wtyczka Phonon dla Qt6 QtDesignera
 Group:		X11/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	Qt6Designer >= %{qt6_ver}
+Requires:	Qt6Designer >= %{qt_ver}
 
 %description -n Qt6Designer-plugin-phonon
 Phonon plugin for Qt6 QtDesigner.
