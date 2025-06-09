@@ -33,7 +33,6 @@ Requires:	Qt6Core >= %{qt6_ver}
 Requires:	Qt6Gui >= %{qt6_ver}
 Requires:	Qt6OpenGL >= %{qt6_ver}
 Requires:	Qt6Widgets >= %{qt6_ver}
-Provides:	qt6-phonon
 Conflicts:	phonon < 4.10.3-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -63,8 +62,6 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	Qt6Core-devel >= %{qt6_ver}
 Requires:	Qt6Widgets-devel >= %{qt6_ver}
-Provides:	qt6-phonon-devel
-Obsoletes:	qt6-phonon-devel
 
 %description devel
 Header files for Phonon library.
