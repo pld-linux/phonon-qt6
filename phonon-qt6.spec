@@ -9,6 +9,7 @@ License:	LGPL v2.1 or LGPL v3
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/phonon/%{version}/phonon-%{version}.tar.xz
 # Source0-md5:	e80e9c73967080016bdb3c0ee514ceab
+Patch0:		phonon-qm-suffix.patch
 URL:		https://userbase.kde.org/Phonon
 BuildRequires:	Qt6Core-devel >= %{qt_ver}
 BuildRequires:	Qt6Designer-devel >= %{qt_ver}
@@ -37,23 +38,37 @@ Conflicts:	phonon < 4.10.3-3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Phonon is the multimedia API for Qt6/KDE5.
+Phonon is the multimedia API for Qt6/KDE6.
 
-Phonon was originally created to allow KDE 5 to be independent of any
+Phonon was originally created to allow KDE to be independent of any
 single multimedia framework such as GStreamer or Xine and to provide a
-stable API for KDE5's lifetime. It was done to fix problems of
+stable API for KDE's lifetime. It was done to fix problems of
 frameworks becoming unmaintained, API instability, and to create a
 simple multimedia API.
 
 %description -l pl.UTF-8
-Phonon to biblioteka multimedialna dla Qt6/KDE5.
+Phonon to biblioteka multimedialna dla Qt6/KDE6.
 
-Pierwotnie powstała, aby pozwolić na niezależność KDE 5 od konkretnego
+Pierwotnie powstała, aby pozwolić na niezależność KDE od konkretnego
 środowiska multimedialnego, takiego jak GStreamer czy Xine, oraz
 zapewnić stabilne API na cały czas życia KDE5. Została stworzona w
 celu wyeliminowania problemów z porzucaniem bibliotek i
 niestabilnością ich API, a także w celu stworzenia prostego API
 multimedialnego.
+
+%package settings
+Summary:	Phonon settings application
+Summary(pl.UTF-8):	Aplikacja do ustawień Phonona
+Group:		X11/Applications/Multimedia
+Requires:	%{name} = %{version}-%{release}
+Provides:	phonon-settings = %{version}-%{release}
+Obsoletes:	phonon-qt5-settings < 4.12.0
+
+%description settings
+Phonon settings application.
+
+%description settings -l pl.UTF-8
+Aplikacja do ustawień Phonona.
 
 %package devel
 Summary:	Header files for Phonon library
@@ -84,6 +99,11 @@ Wtyczka Phonon dla Qt6 QtDesignera.
 
 %prep
 %setup -q -n phonon-%{version}
+%patch -P0 -p1
+
+for f in poqm/*/libphonon_qt.po ; do
+	%{__mv} "$f" "${f%.po}6.po"
+done
 
 %build
 %cmake -B build \
@@ -106,8 +126,8 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_libdir}/qt6/plugins/phonon4qt6_backend
 
-# libphonon_qt.qm and phononsettings_qt.qm files
-%find_lang libphonon_qt --with-qm --all-name
+%find_lang libphonon_qt6 --with-qm
+%find_lang phononsettings_qt --with-qm
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -115,14 +135,17 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
-%files -f libphonon_qt.lang
+%files -f libphonon_qt6.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/phononsettings
 %ghost %{_libdir}/libphonon4qt6.so.4
 %attr(755,root,root) %{_libdir}/libphonon4qt6.so.*.*.*
 %ghost %{_libdir}/libphonon4qt6experimental.so.4
 %attr(755,root,root) %{_libdir}/libphonon4qt6experimental.so.*.*.*
 %dir %{_libdir}/qt6/plugins/phonon4qt6_backend
+
+%files settings -f phononsettings_qt.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/phononsettings
 
 %files devel
 %defattr(644,root,root,755)
